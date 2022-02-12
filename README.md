@@ -26,6 +26,14 @@
     ·
     <a href="https://github.com/sakunaharinda/api-tester/issues">Request Feature</a>
   </p>
+  <br/>
+  <figure>
+    <img src="images/demo.gif" alt="Demo">
+    <br/>
+    <figcaption align = "center"><i><small>Demo</small></i></figcaption>
+  </figure>
+  
+  
 </div>
 <br/>
 
@@ -92,7 +100,11 @@ Step-By-Step guide can also be found [here](https://wave.h2o.ai/docs/installatio
 3. Then you will see the following screen.
 
 <div align="center">
-  <img src="images/home.PNG" alt="Home">
+  <figure>
+    <img src="images/home.PNG" alt="Home">
+    <br/>
+    <figcaption align = "center"><i><small>Home page</small></i></figcaption>
+  </figure>
 </div>
 <br/>
 
