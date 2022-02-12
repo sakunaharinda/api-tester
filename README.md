@@ -17,7 +17,7 @@
   <p align="center">
     <strong>Application for API Testing powered by H2O Wave</strong>
     <br/>
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/sakunaharinda/api-tester/edit/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/sakunaharinda/api-tester">View Demo</a>
