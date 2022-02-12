@@ -1,0 +1,10 @@
+resp = ''
+url = ''
+meta_theme = 'h2o-light'
+toggled = False
+message_bar_visibility = False
+message_bar_type = 'info'
+message_bar_text = ''
+request_body = ''
+request_method = ''
+request_headers = {'Content-type': 'application/json'}
