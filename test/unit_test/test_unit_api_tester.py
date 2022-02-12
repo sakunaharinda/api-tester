@@ -28,6 +28,13 @@ def test_body():
     assert body.items[1].textbox.name == 'text'
 
 
+def test_headers():
+    headers: FormCard = api_tester.headers()
+    assert headers.items[0].text_l.content == "Request headers"
+    assert headers.items[1].inline.items[2].button.name == "addHeader"
+    assert headers.items[2].table.columns[0].name == "id"
+
+
 def get_response():
     with open('resp.json') as f:
         return json.load(f)

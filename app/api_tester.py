@@ -12,6 +12,7 @@ request_body = ''
 request_method = ''
 request_headers = {'Content-type': 'application/json'}
 
+
 @app('/api')
 async def serve(q: Q):
     global request_body, request_headers, request_method, meta_theme, toggled, resp
@@ -19,7 +20,7 @@ async def serve(q: Q):
     if q.args.body:
         q.page['form'] = body()
     elif q.args.headers:
-        headers(q)
+        q.page['form'] = headers()
     elif q.args.ok:
         request_method = q.args.method
         request_body = q.args.text
@@ -32,17 +33,16 @@ async def serve(q: Q):
         key = q.args.key
         val = q.args.val
         if key == '' or val == '':
-            print()
             show_dialog(q)
         else:
             request_headers[key] = val
-            headers(q)
+            q.page['form'] = headers()
     elif q.args.empty_headers:
         q.page['meta'].dialog = None
-        headers(q)
+        q.page['form'] = headers()
     elif q.args.delHeader:
-        request_headers = delete_header(q.args.delId,request_headers)
-        headers(q)
+        request_headers = delete_header(q.args.delId, request_headers)
+        q.page['form'] = headers()
     elif q.args.toggle:
         toggled = True
         toggle_theme(q, 'h2o-dark')
@@ -68,9 +68,14 @@ def update_status_code(response):
 
 
 def delete_header(idx, rh):
-    keys = list(rh.keys())
-    idx = int(idx) - 1
-    del rh[keys[idx]]
+    try:
+        keys = list(rh.keys())
+        idx = int(idx) - 1
+        del rh[keys[idx]]
+    except IndexError:
+        headers()
+    except ValueError:
+        headers()
     return rh
 
 
@@ -156,9 +161,9 @@ def body():
     ])
 
 
-def headers(q: Q):
+def headers():
     global request_body, request_headers
-    q.page['form'] = ui.form_card(box='1 2 5 5', items=[
+    return ui.form_card(box='1 2 5 5', items=[
         ui.text_l('Request headers'),
         ui.inline(items=[
             ui.textbox(name='key', placeholder='Key', width='300px'),
@@ -172,7 +177,7 @@ def headers(q: Q):
         ], rows=[ui.table_row(name='row1', cells=[str(i + 1), k, v]) for i, (k, v) in
                  enumerate(request_headers.items())]),
         ui.inline([
-            ui.textbox(name='delId', placeholder='ID', width='100px'),
+            ui.textbox(name='delId', placeholder='ID', width='100px', value="1"),
             ui.button(name='delHeader', label='Delete'),
             ui.button(name='ok', label='OK', primary=True),
         ]),
