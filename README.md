@@ -94,6 +94,7 @@ Step-By-Step guide can also be found [here](https://wave.h2o.ai/docs/installatio
 
 1. Run the application using the following command
   ```
+  cd app
   wave run api_tester
   ```
 2. Then visit [localhost:10101](http://localhost:10101/api)
