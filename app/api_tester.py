@@ -119,7 +119,7 @@ def api_test(q: Q, req_method):
                     ui.dropdown(name='method', label='Method', value=req_method or '', choices=[
                         ui.choice(name=x, label=x) for x in ['GET', 'POST', 'PUT', 'DELETE']
                     ], width='100px'),
-                    ui.textbox(name='url', label='URL', width='600px', value=url),
+                    ui.textbox(name='url', label='URL', width='600px', value=url, placeholder='URL'),
                 ]
             ),
             ui.button(name='send', label='Send', primary=True, caption=''),
