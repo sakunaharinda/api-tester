@@ -1,2 +1,4 @@
 .idea
 venv
+test/unit_test/.pytest_cache
+test/E2E/.pytest_cache
